@@ -1,0 +1,263 @@
+Utilisateur
+-----------------
+getIdUser()
+getEmail()
+setEmail()
+getMotDePasse()
+setMotDePasse()
+getType()
+setType()
+
+/////////
+
+Administrateur extends Utilisateur
+-----------------
+getNom()
+setNom()
+getPrenom()
+setPrenom()
+
+////////
+
+Client extends Utilisateur
+-----------------
+getNom()
+setNom()
+getPrenom()
+setPrenom()
+getContact()
+setContact()
+getAdresse()
+setAdresse()
+
+////////
+
+Catalogue
+-----------------
+getIdCatalogue()
+getNom()
+setNom()
+getDateCreation()
+setDateCreation()
+
+////////
+
+Categorie
+-----------------
+getIdCategorie()
+getNom()
+setNom()
+getDescription()
+setDescription()
+
+////////
+
+Livre
+-----------------
+getIdLivre()
+getTitre()
+setTitre()
+getQuantiteStock()
+setQuantiteStock()
+getSeuilMinimum()
+setSeuilMinimum()
+getPrixUnitaire()
+setPrixUnitaire()
+getCategorie()
+setCategorie()
+getCatalogue()
+setCatalogue()
+
+////////
+
+EntreeStock
+-----------------
+getIdEntree()
+getDateSaisie()
+setDateSaisie()
+getQuantite()
+setQuantite()
+getLivre()
+setLivre()
+getAdministrateur()
+setAdministrateur()
+
+////////
+
+SortieStock
+-----------------
+getIdSortie()
+getDateSortie()
+setDateSortie()
+getQuantite()
+setQuantite()
+getDestination()
+setDestination()
+getLivre()
+setLivre()
+getClient()
+setClient()
+getAdministrateur()
+setAdministrateur()
+
+////////
+
+UtilisateurDao
+-----------------
+insert(Utilisateur u)
+update(Utilisateur u)
+delete(int idUser)
+findById(int idUser)
+findByEmail(String email)
+findAll()
+
+////////
+
+AdministrateurDao
+-----------------
+insert(Administrateur admin)
+findById(int idUser)
+findAll()
+
+////////
+
+ClientDao
+-----------------
+insert(Client client)
+findById(int idUser)
+findAll()
+
+////////
+
+CatalogueDao
+-----------------
+insert(Catalogue c)
+update(Catalogue c)
+delete(int idCatalogue)
+findById(int idCatalogue)
+findAll()
+
+////////
+
+CategorieDao
+-----------------
+insert(Categorie c)
+update(Categorie c)
+delete(int idCategorie)
+findById(int idCategorie)
+findAll()
+
+////////
+
+LivreDao
+-----------------
+insert(Livre l)
+update(Livre l)
+delete(int idLivre)
+findById(int idLivre)
+findAll()
+findByCategorie(int idCategorie)
+findByCatalogue(int idCatalogue)
+
+////////
+
+EntreeStockDao
+-----------------
+insert(EntreeStock entree)
+findById(int idEntree)
+findAll()
+findByLivre(int idLivre)
+
+////////
+
+SortieStockDao
+-----------------
+insert(SortieStock sortie)
+findById(int idSortie)
+findAll()
+findByLivre(int idLivre)
+findByClient(int idClient)
+
+////////
+
+AuthService
+-----------------
+login(String email, String motDePasse)
+logout(Utilisateur utilisateur)
+
+////////
+
+UtilisateurService
+-----------------
+creerAdministrateur(Administrateur admin)
+creerClient(Client client)
+supprimerUtilisateur(int idUser)
+
+////////
+
+CatalogueService
+-----------------
+creerCatalogue(Catalogue catalogue)
+supprimerCatalogue(int idCatalogue)
+ajouterLivreAuCatalogue(int idLivre, int idCatalogue)
+retirerLivreDuCatalogue(int idLivre)
+
+////////
+
+LivreService
+-----------------
+ajouterLivre(Livre livre)
+modifierLivre(Livre livre)
+supprimerLivre(int idLivre)
+listerLivres()
+listerLivresParCategorie(int idCategorie)
+
+////////
+
+StockService
+-----------------
+enregistrerEntreeStock(EntreeStock entree)
+enregistrerSortieStock(SortieStock sortie)
+verifierDisponibilite(int idLivre, int quantiteDemandee)
+verifierSeuilMinimum(int idLivre)
+mettreAJourStockApresEntree(int idLivre, int quantite)
+mettreAJourStockApresSortie(int idLivre, int quantite)
+
+////////
+
+AuthController
+-----------------
+seConnecter()
+seDeconnecter()
+
+////////
+
+LivreController
+-----------------
+ajouterLivre()
+modifierLivre()
+supprimerLivre()
+afficherLivres()
+
+////////
+
+StockController
+-----------------
+saisirEntreeStock()
+saisirSortieStock()
+consulterStock()
+
+////////
+
+CatalogueController
+-----------------
+creerCatalogue()
+afficherCatalogue()
+
+////////
+
+DatabaseException
+-----------------
+UtilisateurNotFoundException
+StockInsuffisantException
+AuthentificationException

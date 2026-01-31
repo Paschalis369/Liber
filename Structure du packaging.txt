@@ -1,0 +1,71 @@
+com.thegreenspace.gestionstock
+│
+├── config
+├── database
+├── model
+│   ├── utilisateur
+│   ├── catalogue
+│   └── stock
+│
+├── dao
+│   ├── interfaces
+│   └── impl
+│
+├── service
+├── controller
+└── exception
+
+
+model.utilisateur
+ ├── Utilisateur.java
+ ├── Administrateur.java
+ └── Client.java
+
+model.catalogue
+ ├── Catalogue.java
+ ├── Categorie.java
+ └── Livre.java
+
+model.stock
+ ├── EntreeStock.java
+ └── SortieStock.java
+
+dao.interfaces
+ ├── UtilisateurDao.java
+ ├── AdministrateurDao.java
+ ├── ClientDao.java
+ ├── LivreDao.java
+ ├── CategorieDao.java
+ ├── CatalogueDao.java
+ ├── EntreeStockDao.java
+ └── SortieStockDao.java
+
+dao.impl
+ ├── UtilisateurDaoImpl.java
+ ├── AdministrateurDaoImpl.java
+ ├── ClientDaoImpl.java
+ ├── LivreDaoImpl.java
+ ├── CategorieDaoImpl.java
+ ├── CatalogueDaoImpl.java
+ ├── EntreeStockDaoImpl.java
+ └── SortieStockDaoImpl.java
+
+service
+ ├── AuthService.java
+ ├── LivreService.java
+ ├── StockService.java
+ └── UtilisateurService.java
+
+controller
+ ├── Main.java
+ ├── AuthController.java
+ ├── LivreController.java
+ └── StockController.java
+
+database
+ └── DBConnection.java
+
+exception
+ ├── DatabaseException.java
+ ├── StockInsuffisantException.java
+ ├── UtilisateurNotFoundException.java

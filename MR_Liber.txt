@@ -1,0 +1,54 @@
+CREATE TABLE Utilisateur (
+    idUser INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    type ENUM('admin','client') NOT NULL
+);
+
+CREATE TABLE Administrateur (
+    idAdmin INT PRIMARY KEY,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    FOREIGN KEY (idAdmin) REFERENCES Utilisateur(idUser)
+);
+
+
+CREATE TABLE Client (
+    idClient INT PRIMARY KEY,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    contact VARCHAR(100),
+    adresse VARCHAR(150),
+    FOREIGN KEY (idClient) REFERENCES Utilisateur(idUser)
+);
+
+CREATE TABLE Categorie (
+    idCategorie INT PRIMARY KEY,
+    nom VARCHAR(100),
+    description TEXT
+);
+
+CREATE TABLE Livre (
+    idLivre INT PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(150) NOT NULL,
+    quantiteStock INT DEFAULT 0,
+    seuilMinimum INT,
+    prixUnitaire FLOAT,
+    idCategorie INT,
+    FOREIGN KEY (idCategorie) REFERENCES Categorie(idCategorie)
+);
+
+
+create table MouvementStock (
+    idMouvement int primary key auto_increment,
+    dateMouvement date,
+    quantite int,
+    type enum('entree','sortie') not null,
+    destination varchar(100),
+    idLivre int,
+    idUser int,
+    foreign key (idLivre) references Livre(idLivre),
+    foreign key (idUser) references Utilisateur(idUser)
+);
+
+

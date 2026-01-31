@@ -1,0 +1,74 @@
+DAO, SERVICE et CONTROLLER — rôle et responsabilité
+
+
+1)  DAO — Accès et modification des données
+
+Exactement. DAO = méthodes qui permettent de modifier et lire les
+données.
+
+Rôle du DAO : - Parler uniquement à la base de données - Contenir du SQL
+pur - Ne connaître aucune règle métier
+
+Exemples : insert() update() delete() findById() findAll()
+
+Ce que le DAO ne fait pas : - vérifier un stock - gérer des droits -
+décider si une action est autorisée
+
+Le DAO exécute, il ne décide pas.
+
+
+
+2)  SERVICE — Conditions, règles et contraintes
+
+Parfaitement juste. Service = conditions et contraintes pour interagir
+avec les données.
+
+Rôle du Service : - Appliquer les règles métier - Vérifier les
+contraintes - Orchestrer plusieurs DAO
+
+Exemples : if (quantiteDemandee > stockDisponible) throw new
+StockInsuffisantException();
+
+livreDao.update(livre); sortieStockDao.insert(sortie);
+
+Ce que le Service fait : - vérifier - décider - coordonner
+
+Ce qu’il ne fait pas : - afficher des menus - lire des saisies
+utilisateur - écrire du SQL
+
+
+
+3)  CONTROLLER — Parcours et actions utilisateur
+
+Exact aussi. Controller = application des fonctionnalités dans le
+parcours d’actions de l’utilisateur.
+
+Rôle du Controller : - Récupérer les actions utilisateur - Appeler les
+bons services - Gérer le flux de l’application
+
+Exemples : Scanner sc = new Scanner(System.in); int quantite =
+sc.nextInt();
+
+stockService.enregistrerSortieStock(…);
+
+Le Controller fait : - gérer le parcours - appeler les services -
+afficher les résultats
+
+Il ne fait pas : - de logique métier - de SQL - de calculs critiques
+
+Phrase clé à retenir : Le DAO s’occupe de la persistance des données, le
+Service applique les règles métier et les contraintes, et le Controller
+orchestre les actions de l’utilisateur.
+
+Exemple clair — Sortie de stock
+
+Controller : stockController.saisirSortieStock();
+
+Service : verifierDisponibilite(); mettreAJourStock();
+
+DAO : livreDao.update(); sortieStockDao.insert();
+
+Chacun fait son travail, sans empiéter sur l’autre.
+
+Conclusion : Ta compréhension est 100 % correcte. Ton architecture est
+propre et défendable. Tu es au bon niveau pour un vrai projet Java.

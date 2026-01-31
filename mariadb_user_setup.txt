@@ -1,0 +1,72 @@
+CREATION D’UN UTILISATEUR MARIADB ET LIAISON A UNE BASE DE DONNEES
+
+1)  OUVRIR MARIADB
+
+Si vous utilisez XAMPP :
+
+-   Ouvrez XAMPP Control Panel
+-   Cliquez sur Shell
+-   Tapez la commande suivante :
+
+mysql -u root -p
+
+Appuyez sur Entrée puis entrez le mot de passe root (ou laissez vide si
+aucun).
+
+2)  CREER UN UTILISATEUR
+
+Syntaxe générale :
+
+CREATE USER ‘nom_utilisateur’@‘localhost’ IDENTIFIED BY ‘mot_de_passe’;
+
+Exemple :
+
+CREATE USER ‘noellio’@‘localhost’ IDENTIFIED BY ‘monMotDePasse’;
+
+3)  DONNER LES DROITS A UNE BASE SPECIFIQUE
+
+Syntaxe :
+
+GRANT ALL PRIVILEGES ON nom_base.* TO ‘nom_utilisateur’@‘localhost’;
+
+Exemple :
+
+GRANT ALL PRIVILEGES ON quizdb.* TO ‘noellio’@‘localhost’;
+
+4)  APPLIQUER LES PERMISSIONS
+
+Toujours exécuter cette commande après un GRANT :
+
+FLUSH PRIVILEGES;
+
+5)  TESTER L’UTILISATEUR
+
+Quitter MariaDB :
+
+exit
+
+Se reconnecter avec le nouvel utilisateur :
+
+mysql -u noellio -p
+
+Tester l’accès à la base :
+
+USE quizdb;
+
+6)  CONNEXION JAVA AVEC MARIADB
+
+Exemple de code Java JDBC :
+
+String url = “jdbc:mariadb://localhost:3306/quizdb”; String user =
+“noellio”; String password = “monMotDePasse”;
+
+Connection conn = DriverManager.getConnection(url, user, password);
+
+7)  VERIFICATIONS IMPORTANTES
+
+-   Le serveur MariaDB doit être démarré
+-   Le port par défaut est 3306
+-   Le driver MariaDB Connector/J doit être installé
+-   Le nom de la base doit exister
+
+FIN DU DOCUMENT

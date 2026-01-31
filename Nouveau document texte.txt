@@ -1,0 +1,10 @@
+Utilisateur
+   │
+   ├── Administrateur ─── EntreStock
+   │                     SortieStock
+   │
+   └── Client ─────────── SortieStock
+
+Livre ── Categorie
+Livre ── Catalogue
+Livre ── Stock

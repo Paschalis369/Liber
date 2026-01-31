@@ -1,0 +1,153 @@
+classDiagram
+
+class Utilisateur {
+    -idUser: int
+    -email: string
+    -motDePasse: string
+    -type: string
+    +seConnecter()
+    +seDeconnecter()
+}
+
+class Administrateur {
+    -idAdmin: int
+    -nom: string
+    -prenom: string
+    +gererStock()
+    +gererCatalogue()
+    +gererLivres()
+}
+
+class Client {
+    -idClient: int
+    -nom: string
+    -prenom: string
+    -contact: string
+    -adresse: string
+    +passerCommande()
+    +consulterCatalogue()
+    +selectionnerLivre()
+    +selectionnerCategorie()
+}
+
+class Livre {
+    -idLivre: int
+    -titre: string
+    -quantiteStock: int
+    -seuilMinimum: int
+    -prixUnitaire: float
+    +verifierStock()
+    +mettreAJourStock()
+}
+
+class Categorie {
+    -idCategorie: int
+    -nom: string
+    -description: string
+    +listerLivres()
+}
+
+class EntreStock {
+    -idEntree: int
+    -dateSaisie: date
+    -quantite: int
+    +enregistrerEntree()
+}
+
+class SortieStock {
+    -idSortie: int
+    -dateSortie: date
+    -quantite: int
+    -destination: string
+    +enregistrerSortie()
+}
+
+%% Héritage
+Utilisateur <|-- Administrateur
+Utilisateur <|-- Client
+
+%% Associations métier
+Catalogue "1" -- "0..*" Livre
+Categorie "1" -- "0..*" Livre
+
+Livre "1" -- "0..*" EntreStock
+Administrateur "1" -- "0..*" EntreStock
+
+Livre "1" -- "0..*" SortieStock
+Client "1" -- "0..*" SortieStock
+Administrateur "1" -- "0..*" SortieStock
+
+
+
+https://www.canva.com/design/DAG_F8aBrmM/A6dVTOv-crycbDr4b-wlxQ/edit?utm_content=DAG_F8aBrmM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
+
+classDiagram
+
+class Utilisateur {
+    idUser: int
+    email: String
+    motDePasse: String
+    type: TypeUtilisateur
+}
+
+class Administrateur {
+    nom: String
+    prenom: String
+}
+
+class Client {
+    nom: String
+    prenom: String
+    contact: String
+    adresse: String
+}
+
+class Livre {
+    idLivre: int
+    titre: String
+    quantiteStock: int
+    seuilMinimum: int
+    prixUnitaire: float
+}
+
+class Categorie {
+    idCategorie: int
+    nom: String
+    description: String
+}
+
+class Catalogue {
+    idCatalogue: int
+    nom: String
+    dateCreation: Date
+}
+
+class EntreeStock {
+    idEntree: int
+    dateSaisie: Date
+    quantite: int
+}
+
+class SortieStock {
+    idSortie: int
+    dateSortie: Date
+    quantite: int
+    destination: String
+}
+
+%% Héritage
+Utilisateur <|-- Administrateur
+Utilisateur <|-- Client
+
+%% Associations
+Catalogue "1" -- "0..*" Livre
+Categorie "1" -- "0..*" Livre
+
+Livre "1" -- "0..*" EntreeStock
+Administrateur "1" -- "0..*" EntreeStock
+
+Livre "1" -- "0..*" SortieStock
+Client "1" -- "0..*" SortieStock
+Administrateur "1" -- "0..*" SortieStock
