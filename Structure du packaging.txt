@@ -1,71 +1,29 @@
-com.thegreenspace.gestionstock
+src/main/java/
+
+├── app/
+│     MainApp.java   ✅ (classe d’exécution)
 │
-├── config
-├── database
-├── model
-│   ├── utilisateur
-│   ├── catalogue
-│   └── stock
+├── model/
+│     Livre.java
+│     Utilisateur.java
+│     Categorie.java
+│     Exemplaire.java
+│     MouvementStock.java
 │
-├── dao
-│   ├── interfaces
-│   └── impl
+├── dao/
+│     LivreDAO.java
+│     UtilisateurDAO.java
+│     MouvementStockDAO.java
+│     ExemplaireDAO.java
 │
-├── service
-├── controller
-└── exception
-
-
-model.utilisateur
- ├── Utilisateur.java
- ├── Administrateur.java
- └── Client.java
-
-model.catalogue
- ├── Catalogue.java
- ├── Categorie.java
- └── Livre.java
-
-model.stock
- ├── EntreeStock.java
- └── SortieStock.java
-
-dao.interfaces
- ├── UtilisateurDao.java
- ├── AdministrateurDao.java
- ├── ClientDao.java
- ├── LivreDao.java
- ├── CategorieDao.java
- ├── CatalogueDao.java
- ├── EntreeStockDao.java
- └── SortieStockDao.java
-
-dao.impl
- ├── UtilisateurDaoImpl.java
- ├── AdministrateurDaoImpl.java
- ├── ClientDaoImpl.java
- ├── LivreDaoImpl.java
- ├── CategorieDaoImpl.java
- ├── CatalogueDaoImpl.java
- ├── EntreeStockDaoImpl.java
- └── SortieStockDaoImpl.java
-
-service
- ├── AuthService.java
- ├── LivreService.java
- ├── StockService.java
- └── UtilisateurService.java
-
-controller
- ├── Main.java
- ├── AuthController.java
- ├── LivreController.java
- └── StockController.java
-
-database
- └── DBConnection.java
-
-exception
- ├── DatabaseException.java
- ├── StockInsuffisantException.java
- ├── UtilisateurNotFoundException.java
+├── service/
+│     StockService.java
+│     AuthService.java
+│
+├── util/
+│     DBConnection.java
+│
+└── ui/
+      LoginFrame.java
+      DashboardAdmin.java
+      GestionLivreFrame.java
